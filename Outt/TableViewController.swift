@@ -12,6 +12,7 @@ class TableViewController: UITableViewController {
     
     var title1 = [String]()
     var ind = [String]()
+    var img1 = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
        // title = [String]()
@@ -43,6 +44,10 @@ class TableViewController: UITableViewController {
                                 self.ind.append(inde)
                                 
                             }
+                            if let im = blog["thumbnail"] as? String {
+                                self.img1.append(im)
+                                
+                            }
                         }
                     }
                 
@@ -51,6 +56,7 @@ class TableViewController: UITableViewController {
                 }
                 
                 //print(self.ind[0])
+                print(self.img1[0])
                // a = self.count
                 self.tableView.reloadData()
             }
@@ -91,6 +97,16 @@ class TableViewController: UITableViewController {
        // cell.myView.backgroundColor = self.colors[indexPath.row]
         cell.txtView.text = self.ind[indexPath.row]
         cell.title.text = self.title1[indexPath.row]
+        
+        
+        //img
+        if let url = NSURL(string: img1[indexPath.row]) {
+            if let data = NSData(contentsOf: url as URL) {
+                cell.img.image = UIImage(data: data as Data)
+               // imageURL.image = UIImage(data: data)
+            }        
+        }
+        
         return cell
     }
     
