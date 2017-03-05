@@ -58,5 +58,6 @@ class DetailViewController: UIViewController {
             viewController.receivedURL12 = receivedURL
         }
     }
+    
 
 }

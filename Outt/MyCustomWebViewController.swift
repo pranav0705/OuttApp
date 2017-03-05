@@ -30,12 +30,12 @@ var receivedURL12 : String = ""
         // Dispose of any resources that can be recreated.
     }
     
-    
-    
-    
-    @IBAction func closeWeb(_ sender: Any) {
+    @IBAction func close(_ sender: Any) {
         self.view.removeFromSuperview()
+
     }
+    
+
 
     /*
     // MARK: - Navigation

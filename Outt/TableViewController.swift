@@ -8,7 +8,7 @@
 
 import UIKit
 
-var  myString = ""
+//var  myString = ""
 
 class TableViewController: UITableViewController {
     
@@ -170,6 +170,20 @@ class TableViewController: UITableViewController {
             viewController.receivedImage = passImage
             viewController.receivedURL = passURL
         }
+    }
+    
+    func tableView( tableView : UITableView,  titleForHeaderInSection section: Int)->String {
+        return "Recipe"
+    }
+    
+    func tableView (tableView:UITableView , heightForHeaderInSection section:Int)->Float
+    {
+        
+        var title = self.tableView(tableView, titleForHeaderInSection: section)
+        if (title == "") {
+            return 0.0
+        }
+        return 44.0
     }
 
     /*
