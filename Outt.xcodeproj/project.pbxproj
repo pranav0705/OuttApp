@@ -12,6 +12,7 @@
 		EBC785A61E6C7F2F001CF5CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBC785A41E6C7F2F001CF5CB /* Main.storyboard */; };
 		EBC785A81E6C7F2F001CF5CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBC785A71E6C7F2F001CF5CB /* Assets.xcassets */; };
 		EBC785AB1E6C7F2F001CF5CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBC785A91E6C7F2F001CF5CB /* LaunchScreen.storyboard */; };
+		EBC785B31E6C8275001CF5CB /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC785B21E6C8275001CF5CB /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		EBC785A71E6C7F2F001CF5CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBC785AA1E6C7F2F001CF5CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EBC785AC1E6C7F2F001CF5CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBC785B21E6C8275001CF5CB /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				EBC785A71E6C7F2F001CF5CB /* Assets.xcassets */,
 				EBC785A91E6C7F2F001CF5CB /* LaunchScreen.storyboard */,
 				EBC785AC1E6C7F2F001CF5CB /* Info.plist */,
+				EBC785B21E6C8275001CF5CB /* TableViewController.swift */,
 			);
 			path = Outt;
 			sourceTree = "<group>";
@@ -137,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBC785A31E6C7F2F001CF5CB /* ViewController.swift in Sources */,
+				EBC785B31E6C8275001CF5CB /* TableViewController.swift in Sources */,
 				EBC785A11E6C7F2F001CF5CB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
