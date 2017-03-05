@@ -8,14 +8,18 @@
 
 import UIKit
 
+var  myString = ""
+
 class TableViewController: UITableViewController {
     
     var title1 = [String]()
     var ind = [String]()
     var img1 = [String]()
+    var href1 = [String]()
     var valueToPass:String!
     var passTitle:String!
     var passImage:UIImage!
+    var passURL:String!
     override func viewDidLoad() {
         super.viewDidLoad()
        // title = [String]()
@@ -49,6 +53,10 @@ class TableViewController: UITableViewController {
                             }
                             if let im = blog["thumbnail"] as? String {
                                 self.img1.append(im)
+                                
+                            }
+                            if let h = blog["href"] as? String {
+                                self.href1.append(h)
                                 
                             }
                         }
@@ -134,6 +142,8 @@ class TableViewController: UITableViewController {
         passTitle = cell.title.text
         valueToPass = cell.txtView.text
         passImage = cell.img.image
+        passURL = href1[indexPath.row]
+        myString = passURL
         print(valueToPass)
         performSegue(withIdentifier: "showDetail", sender: self)
     }
@@ -150,6 +160,7 @@ class TableViewController: UITableViewController {
             viewController.receivedInde = valueToPass
             viewController.receivedTitle = passTitle
             viewController.receivedImage = passImage
+            viewController.receivedURL = passURL
         }
     }
 
