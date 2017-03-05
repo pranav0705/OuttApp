@@ -36,7 +36,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="140" id="bB6-Lk-NH7">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="140" id="bB6-Lk-NH7" customClass="CustomTableViewCell" customModule="Outt" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="140"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bB6-Lk-NH7" id="MZo-bu-fDR">
@@ -48,7 +48,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tc3-7O-TgV">
-                                            <rect key="frame" x="143" y="9" width="57" height="21"/>
+                                            <rect key="frame" x="143" y="9" width="224" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -69,6 +69,11 @@
                                         <constraint firstAttribute="bottomMargin" secondItem="ddF-qE-oRv" secondAttribute="bottom" constant="-35" id="vzx-cY-aSj"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="img" destination="dvX-bZ-rj2" id="z9X-gg-Rwk"/>
+                                    <outlet property="title" destination="tc3-7O-TgV" id="gYK-lH-8WA"/>
+                                    <outlet property="txtView" destination="ddF-qE-oRv" id="udM-zd-SJ4"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
