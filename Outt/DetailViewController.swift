@@ -10,12 +10,19 @@ import UIKit
 
 class DetailViewController: UIViewController {
     @IBOutlet var img2: UIImageView!
-
+    var receivedInde:String = ""
+    var receivedTitle:String = ""
+    var receivedImage : UIImage!
+    @IBOutlet var titleLbl: UINavigationItem!
     @IBOutlet var detailedTxt: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        detailedTxt.text = receivedInde
+        titleLbl.title = receivedTitle
+        img2.image = receivedImage
     }
 
     override func didReceiveMemoryWarning() {

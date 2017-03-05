@@ -14,6 +14,8 @@ class TableViewController: UITableViewController {
     var ind = [String]()
     var img1 = [String]()
     var valueToPass:String!
+    var passTitle:String!
+    var passImage:UIImage!
     override func viewDidLoad() {
         super.viewDidLoad()
        // title = [String]()
@@ -127,16 +129,27 @@ class TableViewController: UITableViewController {
         let currentCell = tableView.cellForRow(at: indexPath)! as UITableViewCell
         
         valueToPass = currentCell.textLabel?.text
+        let cell = tableView.cellForRow(at: indexPath) as! CustomTableViewCell
+        
+        passTitle = cell.title.text
+        valueToPass = cell.txtView.text
+        passImage = cell.img.image
+        print(valueToPass)
         performSegue(withIdentifier: "showDetail", sender: self)
     }
     
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+    
+    
+    
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if (segue.identifier == "showDetail") {
             // initialize new view controller and cast it as your view controller
             var viewController = segue.destination as! DetailViewController
             // your new view controller should have property that will store passed value
-            viewController.detailedTxt.text = valueToPass
+            viewController.receivedInde = valueToPass
+            viewController.receivedTitle = passTitle
+            viewController.receivedImage = passImage
         }
     }
 
