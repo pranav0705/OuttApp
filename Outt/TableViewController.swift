@@ -13,6 +13,7 @@ class TableViewController: UITableViewController {
     var title1 = [String]()
     var ind = [String]()
     var img1 = [String]()
+    var valueToPass:String!
     override func viewDidLoad() {
         super.viewDidLoad()
        // title = [String]()
@@ -115,6 +116,29 @@ class TableViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
     }
     
+   
+    
+    
+     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("You selected cell #\(indexPath.row)!")
+        
+        // Get Cell Label
+        let indexPath = tableView.indexPathForSelectedRow!
+        let currentCell = tableView.cellForRow(at: indexPath)! as UITableViewCell
+        
+        valueToPass = currentCell.textLabel?.text
+        performSegue(withIdentifier: "showDetail", sender: self)
+    }
+    
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+        
+        if (segue.identifier == "showDetail") {
+            // initialize new view controller and cast it as your view controller
+            var viewController = segue.destination as! DetailViewController
+            // your new view controller should have property that will store passed value
+            viewController.detailedTxt.text = valueToPass
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
