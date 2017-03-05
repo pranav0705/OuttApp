@@ -111,12 +111,20 @@ class TableViewController: UITableViewController {
         
         
         //img
-        if let url = NSURL(string: img1[indexPath.row]) {
-            if let data = NSData(contentsOf: url as URL) {
-                cell.img.image = UIImage(data: data as Data)
-               // imageURL.image = UIImage(data: data)
-            }        
+        if(img1[indexPath.row].isEmpty){
+            print("Yes")
+            var imag : UIImage = UIImage(named:"img")!
+            cell.img.image = imag
         }
+        else{
+            if let url = NSURL(string: img1[indexPath.row]) {
+                if let data = NSData(contentsOf: url as URL) {
+                    cell.img.image = UIImage(data: data as Data)
+                    // imageURL.image = UIImage(data: data)
+                }
+            }
+        }
+       
         
         return cell
     }

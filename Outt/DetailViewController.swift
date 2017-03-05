@@ -38,7 +38,7 @@ class DetailViewController: UIViewController {
         print("buttong clinedllllllll")
       
         
-        performSegue(withIdentifier: "popup1", sender: self)
+      //  performSegue(withIdentifier: "popup1", sender: self)
         
         let popVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "popup") as! MyCustomWebViewController
         self.addChildViewController(popVC)

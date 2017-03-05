@@ -16,7 +16,7 @@
 		EBC785B51E6C9444001CF5CB /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC785B41E6C9444001CF5CB /* CustomTableViewCell.swift */; };
 		EBC785B71E6C9952001CF5CB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC785B61E6C9952001CF5CB /* DetailViewController.swift */; };
 		EBC785B91E6CA647001CF5CB /* MyCustomWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC785B81E6CA647001CF5CB /* MyCustomWebViewController.swift */; };
-		EBC785BB1E6CAF7C001CF5CB /* global.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC785BA1E6CAF7C001CF5CB /* global.swift */; };
+		EBC785BD1E6CB0CB001CF5CB /* img.png in Resources */ = {isa = PBXBuildFile; fileRef = EBC785BC1E6CB0CB001CF5CB /* img.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +31,7 @@
 		EBC785B41E6C9444001CF5CB /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		EBC785B61E6C9952001CF5CB /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EBC785B81E6CA647001CF5CB /* MyCustomWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCustomWebViewController.swift; sourceTree = "<group>"; };
-		EBC785BA1E6CAF7C001CF5CB /* global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = global.swift; sourceTree = "<group>"; };
+		EBC785BC1E6CB0CB001CF5CB /* img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +64,7 @@
 		EBC7859F1E6C7F2F001CF5CB /* Outt */ = {
 			isa = PBXGroup;
 			children = (
+				EBC785BC1E6CB0CB001CF5CB /* img.png */,
 				EBC785A01E6C7F2F001CF5CB /* AppDelegate.swift */,
 				EBC785A21E6C7F2F001CF5CB /* ViewController.swift */,
 				EBC785A41E6C7F2F001CF5CB /* Main.storyboard */,
@@ -74,7 +75,6 @@
 				EBC785B41E6C9444001CF5CB /* CustomTableViewCell.swift */,
 				EBC785B61E6C9952001CF5CB /* DetailViewController.swift */,
 				EBC785B81E6CA647001CF5CB /* MyCustomWebViewController.swift */,
-				EBC785BA1E6CAF7C001CF5CB /* global.swift */,
 			);
 			path = Outt;
 			sourceTree = "<group>";
@@ -141,6 +141,7 @@
 				EBC785AB1E6C7F2F001CF5CB /* LaunchScreen.storyboard in Resources */,
 				EBC785A81E6C7F2F001CF5CB /* Assets.xcassets in Resources */,
 				EBC785A61E6C7F2F001CF5CB /* Main.storyboard in Resources */,
+				EBC785BD1E6CB0CB001CF5CB /* img.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,7 +152,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBC785BB1E6CAF7C001CF5CB /* global.swift in Sources */,
 				EBC785A31E6C7F2F001CF5CB /* ViewController.swift in Sources */,
 				EBC785B31E6C8275001CF5CB /* TableViewController.swift in Sources */,
 				EBC785B91E6CA647001CF5CB /* MyCustomWebViewController.swift in Sources */,

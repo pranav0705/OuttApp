@@ -14,8 +14,6 @@ var receivedURL12 : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var myCustomViewController: DetailViewController = DetailViewController(nibName: nil, bundle: nil)
-        var getThatValue = myCustomViewController.receivedURL
         receivedURL12 = myString
         
         
