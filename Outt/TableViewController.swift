@@ -20,6 +20,9 @@ class TableViewController: UITableViewController {
     var passTitle:String!
     var passImage:UIImage!
     var passURL:String!
+    var ir = 0;
+    var expandedRows = Set<Int>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        // title = [String]()
@@ -76,7 +79,7 @@ class TableViewController: UITableViewController {
         
       
        // print(a);
-
+        
         
     }
 
@@ -110,16 +113,25 @@ class TableViewController: UITableViewController {
         cell.title.text = self.title1[indexPath.row]
         
         
-        if cell.txtView!.text.utf16.count >= 120
+        if cell.txtView!.text.utf16.count >= 30
         {
-            var abc : String =  (cell.txtView.text! as NSString).substring(with: NSRange(location: 0, length: 120))
+            var abc : String =  (cell.txtView.text! as NSString).substring(with: NSRange(location: 0, length: 30))
             abc += "...ReadMore"
             cell.txtView!.text = abc
-            var attribs = [NSForegroundColorAttributeName: UIColor.black, NSFontAttributeName: UIFont.systemFont(ofSize: 14.0)]
-            var attributedString: NSMutableAttributedString = NSMutableAttributedString(string: abc, attributes: attribs)
-            attributedString.addAttribute(NSLinkAttributeName, value: "...ReadMore", range: NSRange(location: 120, length: 11))
-            attributedString.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleSingle.rawValue, range: NSRange(location: 120, length: 11))
+            let attribs = [NSForegroundColorAttributeName: UIColor.black, NSFontAttributeName: UIFont.systemFont(ofSize: 14.0)]
+            let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: abc, attributes: attribs)
+            attributedString.addAttribute(NSLinkAttributeName, value: "...ReadMore", range: NSRange(location: 30, length: 11))
+            attributedString.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleSingle.rawValue, range: NSRange(location: 30, length: 11))
+            
             cell.txtView!.attributedText = attributedString
+            
+            var readMoreGesture = UITapGestureRecognizer(target: self, action: #selector(self.readMoreDidClickedGesture))
+         //   readMoreGesture.tag = 1
+            readMoreGesture.numberOfTapsRequired = 1
+            cell.txtView!.addGestureRecognizer(readMoreGesture)
+            cell.txtView!.isUserInteractionEnabled = true
+            
+        
             
             
             //cell.txtView.delegate = self
@@ -130,7 +142,7 @@ class TableViewController: UITableViewController {
         //img
         if(img1[indexPath.row].isEmpty){
             print("Yes")
-            var imag : UIImage = UIImage(named:"img")!
+            let imag : UIImage = UIImage(named:"img")!
             cell.img.image = imag
         }
         else{
@@ -142,17 +154,77 @@ class TableViewController: UITableViewController {
             }
         }
        
-        
+        cell.isExpanded = self.expandedRows.contains(indexPath.row)
         return cell
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
-        tableView.estimatedRowHeight = 100
-        tableView.rowHeight = UITableViewAutomaticDimension
+//        tableView.estimatedRowHeight = 100
+    self.tableView.rowHeight = UITableViewAutomaticDimension
+       //tableView.rowHeight = UITableViewAutomaticDimension
+   }
+   
+ 
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? CustomTableViewCell
+            else { return }
+        
+        self.expandedRows.remove(indexPath.row)
+        
+        cell.isExpanded = false
+        
+        self.tableView.beginUpdates()
+        self.tableView.endUpdates()
+       
+        
     }
     
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        print(indexPath.row)
+//        guard let cell = tableView.cellForRow(at: indexPath) as? CustomTableViewCell
+//            else { return }
+//        
+//        switch cell.isExpanded
+//        {
+//        case true:
+//            self.expandedRows.remove(indexPath.row)
+//            var abc : String =  (cell.txtView.text! as NSString).substring(with: NSRange(location: 0, length: 30))
+//            abc += "...ReadMore"
+//            cell.txtView!.text = abc
+//            let attribs = [NSForegroundColorAttributeName: UIColor.black, NSFontAttributeName: UIFont.systemFont(ofSize: 14.0)]
+//            let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: abc, attributes: attribs)
+//            attributedString.addAttribute(NSLinkAttributeName, value: "...ReadMore", range: NSRange(location: 30, length: 11))
+//            attributedString.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleSingle.rawValue, range: NSRange(location: 30, length: 11))
+//            
+//            cell.txtView!.attributedText = attributedString
+//            
+//            
+//        case false:
+//            self.expandedRows.insert(indexPath.row)
+//            cell.txtView.text = self.ind[indexPath.row]
+//            
+//            var abc : String =  cell.txtView.text
+//            cell.txtView!.text = abc
+//            let attribs = [NSForegroundColorAttributeName: UIColor.black, NSFontAttributeName: UIFont.systemFont(ofSize: 14.0)]
+//            let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: abc, attributes: attribs)
+//            
+//            
+//            cell.txtView!.attributedText = attributedString
+//            
+//        }
+//        
+//        
+//        cell.isExpanded = !cell.isExpanded
+//        
+//        self.tableView.beginUpdates()
+//        self.tableView.endUpdates()
+//        
+//    }
+    
    
-     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("You selected cell #\(indexPath.row)!")
         
         // Get Cell Label
@@ -195,6 +267,69 @@ class TableViewController: UITableViewController {
     {
         print("clickeed")
         return true
+    }
+    
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 144.0
+        
+    }
+    
+    func readMoreDidClickedGesture(sender: UITapGestureRecognizer? = nil) {
+        // handling code
+       print("touch")
+        var tapLocation = sender?.location(in: self.tableView)
+        let indexPath : NSIndexPath = self.tableView.indexPathForRow(at: tapLocation!)! as NSIndexPath
+//        let currentCell = tableView.cellForRow(at: indexPath as IndexPath)! as UITableViewCell
+//        
+//                valueToPass = currentCell.textLabel?.text
+//                let cell = tableView.cellForRow(at: indexPath as IndexPath) as! CustomTableViewCell
+//        
+//                passTitle = cell.title.text
+//                valueToPass = self.ind[indexPath.row]
+//                passImage = cell.img.image
+//                passURL = href1[indexPath.row]
+//                myString = passURL
+//                print(valueToPass)
+//                performSegue(withIdentifier: "showDetail", sender: self)
+        
+        guard let cell = tableView.cellForRow(at: indexPath as IndexPath) as? CustomTableViewCell
+            else { return }
+        
+        switch cell.isExpanded
+        {
+        case true:
+            self.expandedRows.remove(indexPath.row)
+            var abc : String =  (cell.txtView.text! as NSString).substring(with: NSRange(location: 0, length: 30))
+            abc += "...ReadMore"
+            cell.txtView!.text = abc
+            let attribs = [NSForegroundColorAttributeName: UIColor.black, NSFontAttributeName: UIFont.systemFont(ofSize: 14.0)]
+            let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: abc, attributes: attribs)
+            attributedString.addAttribute(NSLinkAttributeName, value: "...ReadMore", range: NSRange(location: 30, length: 11))
+            attributedString.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleSingle.rawValue, range: NSRange(location: 30, length: 11))
+            
+            cell.txtView!.attributedText = attributedString
+            
+            
+        case false:
+            self.expandedRows.insert(indexPath.row)
+            cell.txtView.text = self.ind[indexPath.row]
+            
+            var abc : String =  cell.txtView.text
+            cell.txtView!.text = abc
+            let attribs = [NSForegroundColorAttributeName: UIColor.black, NSFontAttributeName: UIFont.systemFont(ofSize: 14.0)]
+            let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: abc, attributes: attribs)
+            
+            
+            cell.txtView!.attributedText = attributedString
+            
+        }
+        
+        
+        cell.isExpanded = !cell.isExpanded
+        
+        self.tableView.beginUpdates()
+        self.tableView.endUpdates()
+
     }
 
     /*

@@ -21,6 +21,19 @@ class CustomTableViewCell: UITableViewCell {
         
     }
 
+    @IBOutlet var heightConstraint: NSLayoutConstraint!
+    var isExpanded:Bool = false
+        {
+        didSet
+        {
+            if !isExpanded {
+                self.heightConstraint.constant = 30.0
+                
+            } else {
+                self.heightConstraint.constant = 91.0
+            }
+        }
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
