@@ -41,11 +41,12 @@ class DetailViewController: UIViewController {
         
       //  performSegue(withIdentifier: "popup1", sender: self)
         
-        let popVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "popup") as! MyCustomWebViewController
-        self.addChildViewController(popVC)
-        popVC.view.frame = self.view.frame
-        self.view.addSubview(popVC.view)
-        popVC.didMove(toParentViewController: self)
+//        let popVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "popup") as! MyCustomWebViewController
+//        self.addChildViewController(popVC)
+//        popVC.view.frame = self.view.frame
+//        self.view.addSubview(popVC.view)
+//        popVC.didMove(toParentViewController: self)
+        performSegue(withIdentifier: "popup1", sender: self)
         
         
     }
@@ -56,7 +57,6 @@ class DetailViewController: UIViewController {
             // initialize new view controller and cast it as your view controller
             var viewController = segue.destination as! MyCustomWebViewController
             // your new view controller should have property that will store passed value
-            viewController.receivedURL12 = receivedURL
         }
     }
     
