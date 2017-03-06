@@ -24,7 +24,8 @@ class DetailViewController: UIViewController {
         print("-------",receivedURL)
         // Do any additional setup after loading the view.
         
-        detailedTxt.text = receivedInde
+        detailedTxt.text = "Ingredients: \n" + receivedInde
+        detailedTxt.font?.withSize(20)
         //titleLbl.title = receivedTitle
         img2.image = receivedImage
     }
