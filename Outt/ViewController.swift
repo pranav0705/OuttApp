@@ -28,6 +28,7 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
         tableView.delegate = self
         tableView.dataSource = self
         
+        //multipane
         //calling url
         let urlString = "http://www.recipepuppy.com/api/?i=onions,garlic&q=omelet&p=3"
         

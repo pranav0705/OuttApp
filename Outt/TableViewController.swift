@@ -110,6 +110,23 @@ class TableViewController: UITableViewController {
         cell.title.text = self.title1[indexPath.row]
         
         
+        if cell.txtView!.text.utf16.count >= 120
+        {
+            var abc : String =  (cell.txtView.text! as NSString).substring(with: NSRange(location: 0, length: 120))
+            abc += "...ReadMore"
+            cell.txtView!.text = abc
+            var attribs = [NSForegroundColorAttributeName: UIColor.black, NSFontAttributeName: UIFont.systemFont(ofSize: 14.0)]
+            var attributedString: NSMutableAttributedString = NSMutableAttributedString(string: abc, attributes: attribs)
+            attributedString.addAttribute(NSLinkAttributeName, value: "...ReadMore", range: NSRange(location: 120, length: 11))
+            attributedString.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleSingle.rawValue, range: NSRange(location: 120, length: 11))
+            cell.txtView!.attributedText = attributedString
+            
+            
+            //cell.txtView.delegate = self
+            cell.txtView.isSelectable = false
+        }
+        
+        
         //img
         if(img1[indexPath.row].isEmpty){
             print("Yes")
@@ -130,31 +147,66 @@ class TableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        tableView.estimatedRowHeight = 150
+        tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
     }
     
    
+    var thereIsCellTapped = false
+    var selectedRowIndex = -1
     
-    
-     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("You selected cell #\(indexPath.row)!")
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
-        // Get Cell Label
-        let indexPath = tableView.indexPathForSelectedRow!
-        let currentCell = tableView.cellForRow(at: indexPath)! as UITableViewCell
+        if indexPath.row == selectedRowIndex && thereIsCellTapped {
+            return 140
+            print("nooo")
+        }
         
-        valueToPass = currentCell.textLabel?.text
-        let cell = tableView.cellForRow(at: indexPath) as! CustomTableViewCell
-        
-        passTitle = cell.title.text
-        valueToPass = cell.txtView.text
-        passImage = cell.img.image
-        passURL = href1[indexPath.row]
-        myString = passURL
-        print(valueToPass)
-        performSegue(withIdentifier: "showDetail", sender: self)
+        return 44
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        self.tableView.cellForRow(at: indexPath as IndexPath)?.backgroundColor = UIColor.gray
+        
+        // avoid paint the cell is the index is outside the bounds
+        if self.selectedRowIndex != -1 {
+          //  self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: self.selectedRowIndex, inSection: 0))?.backgroundColor = UIColor.whiteColor()
+           // self.tableView.cellForRow(at: NSIndexPath(forRow: self.selectedRowIndex).backgroundColor = UIColor.whiteColor()
+        }
+    
+        if selectedRowIndex != indexPath.row {
+            self.thereIsCellTapped = true
+            self.selectedRowIndex = indexPath.row
+        }
+        else {
+            // there is no cell selected anymore
+            self.thereIsCellTapped = false
+            self.selectedRowIndex = -1
+        }
+        
+        self.tableView.beginUpdates()
+        self.tableView.endUpdates()
+    }
+    
+//     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        print("You selected cell #\(indexPath.row)!")
+//        
+//        // Get Cell Label
+//        let indexPath = tableView.indexPathForSelectedRow!
+//        let currentCell = tableView.cellForRow(at: indexPath)! as UITableViewCell
+//        
+//        valueToPass = currentCell.textLabel?.text
+//        let cell = tableView.cellForRow(at: indexPath) as! CustomTableViewCell
+//        
+//        passTitle = cell.title.text
+//        valueToPass = cell.txtView.text
+//        passImage = cell.img.image
+//        passURL = href1[indexPath.row]
+//        myString = passURL
+//        print(valueToPass)
+//        performSegue(withIdentifier: "showDetail", sender: self)
+//    }
     
     
     
@@ -172,18 +224,14 @@ class TableViewController: UITableViewController {
         }
     }
     
-    func tableView( tableView : UITableView,  titleForHeaderInSection section: Int)->String {
-        return "Recipe"
-    }
+//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        return 100
+//    }
     
-    func tableView (tableView:UITableView , heightForHeaderInSection section:Int)->Float
+    func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool
     {
-        
-        var title = self.tableView(tableView, titleForHeaderInSection: section)
-        if (title == "") {
-            return 0.0
-        }
-        return 44.0
+        print("clickeed")
+        return true
     }
 
     /*

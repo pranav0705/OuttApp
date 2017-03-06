@@ -25,7 +25,7 @@ class DetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         detailedTxt.text = receivedInde
-        titleLbl.title = receivedTitle
+        //titleLbl.title = receivedTitle
         img2.image = receivedImage
     }
 
